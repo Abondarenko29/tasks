@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(99, 109, 6);
+}
+
+
+nav.navbar {
+    padding:10px;
+    margin-bottom: 5%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+ul.nav-underline {
+    margin-left:15% !important;
+    min-width: 150% !important;
+}
+
+.white {
+    color: white !important;
+}
+
+.yellow {
+    color:rgb(211, 207, 0) !important;
+}
+
+.green {
+    color: rgb(39, 95, 1);
+}
+
+.right {
+    justify-content:right !important;
+}
+
+div.tasks {
+    margin:5%;
+    width:60%;
+}
+
+div.card {
+    margin:12% !important;
+}
+
+.margin-1 {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

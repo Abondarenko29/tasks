@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card text-center bg-primary">
+    <div class="card-header green" data-bs-theme="dark">
+        Creator: {{ task.user.username }}<br>
+        <small>Be solved to: {{ task.due_date }}</small>
+    </div>
+    <div class="card-body yellow">
+      <h5 class="card-title">
+        {{ task.title }}
+        <small class="text-body-secondary">
+            <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
+            <span class="badge text-bg-secondary">{{ task.get_priority_display }}</span>
+        </small>
+      </h5>
+      <p class="card-text">{{ task.description }}</p>
+      <a href="#" class="btn btn-success">Go somewhere</a>
+    </div>
+    <div class="card-footer white">
+        {{ task.created_at }}
+    </div>
+  </div>
+{% endblock %}

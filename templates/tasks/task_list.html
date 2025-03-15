@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="list-group tasks">
+    {% for task in tasks %}
+    <a href="{% url 'task-detail' task.pk %}" class="list-group-item list-group-item-action bg-primary" data-bs-theme="dark">
+        <div class="d-flex w-100 justify-content-between white">
+        <h5 class="mb-1">{{ task.title }}</h5>
+        </div>
+        <p class="mb-1 white">Some placeholder content in a paragraph.</p>
+        <small class="text-body-secondary">{{ task.due_date }}</small>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

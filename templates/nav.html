@@ -1,0 +1,25 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="flex">
+        <div class="navbar-brand bold left">
+        <img src="{% static 'img/logo.png'%}" width="40" height="36">Task-meneger
+        </div>
+    <ul class="nav nav-underline">
+        <li class="nav-item">
+          <a class="nav-link white" aria-current="page" href="{% url 'task-list' %}">Task list</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu bg-primary">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </li>
+      </ul>
+    </nav>
