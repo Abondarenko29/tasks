@@ -20,7 +20,7 @@ ul.nav-underline {
 }
 
 .white {
-    color: white !important;
+    color:white !important;
 }
 
 .yellow {
@@ -28,11 +28,19 @@ ul.nav-underline {
 }
 
 .green {
-    color: rgb(39, 95, 1);
+    color:rgb(39, 95, 1);
+}
+
+.black {
+    color:black !important;
 }
 
 .right {
     justify-content:right !important;
+}
+
+.flex {
+    display: flex !important;
 }
 
 div.tasks {
@@ -47,4 +55,13 @@ div.card {
 .margin-1 {
     margin-top: 1%;
     margin-bottom: 1%;
+}
+
+div.filter {
+    margin-right:10%;
+    margin-left:10%;
+}
+
+label.filter {
+    margin-right:10px !important;
 }

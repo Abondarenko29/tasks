@@ -21,4 +21,17 @@
         {{ task.created_at }}
     </div>
   </div>
+{% for comment in task.comments.all %}
+  <small>{{ comment.author }} {{ comment.creted_date }}</small>
+  <p>{{ comment.content }}</p>
+  <a href="{% url 'comment-update' comment.pk %}">Edit</a>
+{% endfor %}
+<div>
+  <p>Add comment</p>
+  <form action="{% url 'task-detail' task.id %}" method="post">
+    {% csrf_token %}
+    {{ comment_form.as_div }}
+    <button type="submit">Save</button>
+  </form>
+</div>
 {% endblock %}

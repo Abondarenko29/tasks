@@ -27,8 +27,8 @@ class Task(models.Model):
                                 choices=PRIORITY_CHOICES,
                                 default="")
     due_date = models.DateField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             related_name="tasks")
+    creator = models.ForeignKey(User, on_delete=models.CASCADE,
+                                related_name="tasks")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
