@@ -1,25 +1,45 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-info" data-bs-theme="dark">
     <div class="flex">
         <div class="navbar-brand bold left">
         <img src="{% static 'img/logo.png'%}" width="40" height="36">Task-meneger
         </div>
     <ul class="nav nav-underline">
         <li class="nav-item">
-          <a class="nav-link white" aria-current="page" href="{% url 'task-list' %}">Task list</a>
+          <a class="nav-link white" aria-current="page" href="{% url 'project-list' %}">Projects</a>
         </li>
         <li class="nav-item">
           <a class="nav-link white" href="{% url 'task-create' %}">Add task</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu bg-primary">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+        <li class="nav-item">
+          <a class="nav-link white" href="{% url 'project-create' %}">Create project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="{% url 'mytasks' %}">My tasks</a>
+        </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+              <a class="nav-link white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ request.user.username }}</a>
+              <ul class="dropdown-menu bg-info">
+                <li><a class="dropdown-item white" href="{% url 'user-update' %}">Change yourself</a></li>
+                <li><a class="dropdown-item white" href="{% url 'user-details' pk=request.user.pk %}">Your profile</a></li>
+                <li><a class="dropdown-item white" href="{% url 'user-delete' %}">Delete yourself</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="dropdown-item white">Logout</button>
+                  </form>
+                </li>
+              </ul>
           </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link white" href="{% url 'login' %}">Login|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="{% url 'register' %}">register</a>
+        </li>
+        {% endif %}
       </ul>
     </nav>

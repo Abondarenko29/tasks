@@ -1,37 +1,64 @@
 {% extends 'base.html' %}
+{% load customtags %}
 
 {% block content %}
-<div class="card text-center bg-primary">
-    <div class="card-header green" data-bs-theme="dark">
-        Creator: {{ task.user.username }}<br>
-        <small>Be solved to: {{ task.due_date }}</small>
-    </div>
-    <div class="card-body yellow">
-      <h5 class="card-title">
-        {{ task.title }}
-        <small class="text-body-secondary">
-            <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
-            <span class="badge text-bg-secondary">{{ task.get_priority_display }}</span>
-        </small>
-      </h5>
-      <p class="card-text">{{ task.description }}</p>
-      <a href="#" class="btn btn-success">Go somewhere</a>
-    </div>
-    <div class="card-footer white">
-        {{ task.created_at }}
-    </div>
-  </div>
-{% for comment in task.comments.all %}
-  <small>{{ comment.author }} {{ comment.creted_date }}</small>
-  <p>{{ comment.content }}</p>
-  <a href="{% url 'comment-update' comment.pk %}">Edit</a>
-{% endfor %}
-<div>
-  <p>Add comment</p>
-  <form action="{% url 'task-detail' task.id %}" method="post">
-    {% csrf_token %}
-    {{ comment_form.as_div }}
-    <button type="submit">Save</button>
-  </form>
+
+<div class="details">
+<h2>{{ task.title }}
+<small class="text-body-secondary">
+    <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
+    <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>
+</small></h2>
+<div class="vertical"><p>
+Creator: {{ task.creator.username }}<br>
+Be solved to: {{ task.due_date }}<br>
+Created ar: {{ task.created_at }}</p></div>
+<p class="fs-5 task-text">{{ task.description }}</p>
 </div>
+<div class="comment-system">
+  {% for comment in task.comments.all %}
+  <div class="content">
+    <header class="header alpha yellow shadow-lg rounded">
+      <a class="header-brand yellow" href="#">{{ comment.author.username }}</a>
+      <ul class="header-nav">
+        <li class="nav-item active">
+          <p class="nav-link yellow">{{ comment.creted_date }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link blue" href="{% url 'comment-update' pk=comment.pk %}">Edit</a>
+        </li>
+      </ul>
+    </header>
+    <p class="yellow block">
+      {{ comment.content }}
+      <div>
+      {% if comment.media %}
+        {% if comment.media.url|endswith:".jpg" or comment.media.url|endswith:".png" or comment.media.url|endswith:".jpeg" or comment.media.url|endswith:".svg" %}
+          <img src="{{ comment.media.url }}" class="image">
+        {% elif comment.media.url|endswith:".mp4" %}
+          <video width="640px" height="320px" controls>
+            <source src="{{ comment.media.url }}" type="video/mp4"></source>
+          </video>
+        {% else %}
+          <a href="{{ comment.video.url }}" class="blue">Load file</a>
+        {% endif %}
+      {% endif %}
+      <img>
+      </div>
+    </p>
+  </div>
+  {% endfor %}
+  <div class="comment">
+  <form action="{% url 'task-detail' task.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="flex">
+      {{ comment_form.content }}
+      <div class="block">
+        {{ comment_form.media }}
+        <button type="submit" class="btn btn-warning">Send</button></div>
+      </div>
+    </form>
+  </div>
+</div>
+
 {% endblock %}

@@ -11,6 +11,7 @@ class Comment(models.Model):
                                related_name="comments")
     content = models.TextField()
     creted_date = models.DateTimeField(auto_now_add=True)
+    media = models.FileField(upload_to="comments/", null=True, blank=True)
 
     def __str__(self):
         return f"{self.author} {self.creted_date}"

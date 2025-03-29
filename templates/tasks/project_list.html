@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for project in projects %}
+<details class="my-accordion">
+  <summary><a href="{% url 'task-list' project.pk %}" class="yellow"><small>Editors: 
+    {% for editor in project.editors.all %}
+    {{ editor.username }}
+    {% endfor %}
+  </small></a>
+    <h2 class="blue">{{ project.name }}</h2></summary>
+  <ul>
+    {% for task in project.tasks.all %}
+    <li class="yellow fs-5 text">
+      {{ task.title }}
+          <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
+          <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>
+      </li>
+      {% endfor %}
+  </ul>
+</details>
+{% endfor %}
+
+{% endblock %}

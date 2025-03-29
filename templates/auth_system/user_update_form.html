@@ -12,8 +12,12 @@
                     {{ field.errors }}
                 </div>
             {% endfor %}
+            <div class="form-group">
+                <label>Password:</label>
+                <a href="{% url 'password-update' %}" class="white" style="font-weight: bold;">Update password</a>
+            </div>
         </div>
-        <button type="submit" class="form-submit-btn bg-white">Create</button>
+        <button type="submit" class="form-submit-btn bg-white">Update</button>
     </form>
 </div>
 

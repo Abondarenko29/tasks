@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 # Create your views here.
 class CommentUpdateView(UserIsOwnerMixin, UpdateView):
     model = Comment
-    fields = ["content"]
+    fields = ["content", "media"]
 
     def get_success_url(self):
         return reverse_lazy('task-detail', kwargs={'pk': self.object.task.id})

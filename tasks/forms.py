@@ -1,11 +1,29 @@
 from django import forms
-from tasks.models import Task
+from tasks.models import Task, Project
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ["name", "editors"]
+
+    def __init__(self, *args, **kwargs):
+        super(ProjectForm, self).__init__(*args, **kwargs)
+        editors_field = self.fields["editors"].widget.attrs
+        name_field = self.fields["name"].widget.attrs
+        editors_field.update({"rows": "10", "cols": "50",
+                              "class": "form-multi-select",
+                              "data-coreui-search": "true",
+                              "multiple data-coreui-selection-type":
+                              "counter", })
+        name_field.update({"rows": "10", "cols": "50", })
 
 
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ["title", "description", "status", "priority", "due_date"]
+        fields = ["title", "description", "status",
+                  "priority", "due_date", "maker", "project"]
         widgets = {
             "due_date": forms.DateInput(attrs={"type": "date"}),
         }
@@ -13,9 +31,9 @@ class TaskForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TaskForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            print(field)
             field_editing = self.fields[field].widget.attrs
-            field_editing.update({"class": "col-auto text-body-primary"})
+            field_editing.update({"rows": "10",
+                                  "cols": "50", })
 
 
 class TaskFilterForm(forms.Form):

@@ -28,11 +28,20 @@ ul.nav-underline {
 }
 
 .green {
-    color:rgb(39, 95, 1);
+    color:rgb(39, 95, 1) !important;
 }
 
 .black {
     color:black !important;
+}
+
+.blue {
+    color: darkblue !important;
+}
+
+ul.errorlist {
+    color: rgb(187, 0, 0) !important;
+    font-size: 18px !important;
 }
 
 .right {
@@ -64,4 +73,86 @@ div.filter {
 
 label.filter {
     margin-right:10px !important;
+}
+
+footer.down {
+    background-position: bottom !important;
+}
+.accordion-item {
+    background-color: rgba(100, 100, 100, 0) !important;
+}
+
+.accordion-button {
+    background-color: rgba(100, 100, 100, 0) !important;
+}
+
+div.accordion {
+    margin:2%;
+}
+
+div.accordion-item {
+    padding: 1%;
+}
+
+.details {
+    margin:1%;
+    color:darkblue;
+}
+
+div.comment {
+    display: flex;
+}
+
+div.comment-system {
+    margin:2%;
+    border:2px dashed darkblue;
+    padding:1%;
+    max-width: 50%;
+}
+
+textarea.comment {
+    min-height: 120px;
+    max-height: 120px;
+}
+
+iframe.comment {
+    border: 1px solid darkgoldenrod;
+}
+
+.alpha {
+    background-color:rgba(0, 0, 0, 0);
+}
+
+div.content {
+    border:1px dotted rgba(16, 19, 182, 0.5);
+    margin-bottom: 15px;
+    padding: 7px;
+}
+
+.task-text {
+    border:1px dotted rgba(16, 19, 182, 0.5);
+    padding: 12px;
+    max-width: 50%;
+    margin-top:10px;
+}
+
+.vertical {
+    border-left: thick solid #ff0000 !important;
+    padding-left:15px;
+  }
+
+img.image {
+    max-width: 350px;
+    max-height: 500px;
+}
+
+.block {
+    display:block !important;
+}
+
+details.my-accordion {
+    margin:10px;
+    padding:10px;
+    border:2px solid rgba(169, 169, 169, 0.7);
+    border-radius:3px;
 }
