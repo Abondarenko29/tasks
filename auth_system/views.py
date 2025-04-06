@@ -8,7 +8,7 @@ from auth_system.forms import UserCreationForm, UserUpdateForm
 
 
 # Create your views here.
-class UserCreateView(CreateView):  # Doesn't work
+class UserCreateView(CreateView):
     model = User
     form_class = UserCreationForm
     template_name = "auth_system/user_form.html"
@@ -26,7 +26,7 @@ class UserCreateView(CreateView):  # Doesn't work
         return valid
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):  # Work
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = "auth_system/user_update_form.html"
@@ -36,7 +36,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):  # Work
         return self.request.user
 
 
-class PasswordUpdateView(LoginRequiredMixin, views.PasswordChangeView):  # Work
+class PasswordUpdateView(LoginRequiredMixin, views.PasswordChangeView):
     template_name = "auth_system/user_form.html"
     success_url = reverse_lazy("project-list")
 
@@ -46,7 +46,7 @@ class PasswordUpdateView(LoginRequiredMixin, views.PasswordChangeView):  # Work
         return context
 
 
-class LoginView(views.LoginView):  # Work
+class CustomLoginView(views.LoginView):
     template_name = "auth_system/user_form.html"
 
     def get_context_data(self, **kwargs):
@@ -55,7 +55,7 @@ class LoginView(views.LoginView):  # Work
         return context
 
 
-class UserDetailView(DetailView):  # Work
+class UserDetailView(DetailView):
     template_name = "auth_system/user_details.html"
     model = User
     context_object_name = "user"

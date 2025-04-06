@@ -8,7 +8,7 @@ urlpatterns = [
     path("update/", views.UserUpdateView.as_view(), name="user-update"),
     path("update/password/", views.PasswordUpdateView.as_view(),
          name="password-update"),
-    path("login/", views.LoginView.as_view(), name="login"),
+    path("login/", views.CustomLoginView.as_view(), name="login"),
     path("logout/", django_views.LogoutView.as_view(), name="logout"),
     path("details/<int:pk>", views.UserDetailView.as_view(),
          name="user-details"),

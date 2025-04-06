@@ -51,3 +51,9 @@ class TaskFilterForm(forms.Form):
         super(TaskFilterForm, self).__init__(*args, **kwargs)
         field_status = self.fields["status"].widget.attrs
         field_status.update({"class": "form-control bg-warning"})
+
+
+class TaskPutForm(TaskForm):
+    class Meta(TaskForm.Meta):
+        fields = ["title", "description", "status",
+                  "priority", "due_date"]

@@ -4,13 +4,14 @@
 {% block content %}
 
 <div class="details">
-<h2>{{ task.title }}
+<h2><a href="{% url 'task-update' task.pk %}" class="blue">{{ task.title }}</a>
 <small class="text-body-secondary">
     <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
     <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>
 </small></h2>
 <div class="vertical"><p>
 Creator: {{ task.creator.username }}<br>
+Maker: {{ task.maker.username }}<br>
 Be solved to: {{ task.due_date }}<br>
 Created ar: {{ task.created_at }}</p></div>
 <p class="fs-5 task-text">{{ task.description }}</p>
@@ -54,6 +55,9 @@ Created ar: {{ task.created_at }}</p></div>
     <div class="flex">
       {{ comment_form.content }}
       <div class="block">
+        <div class="">
+        <label for="id_media" class="btn-3">select
+        </label>
         {{ comment_form.media }}
         <button type="submit" class="btn btn-warning">Send</button></div>
       </div>

@@ -1,10 +1,12 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import Task, Project
-from tasks.forms import TaskForm, TaskFilterForm, ProjectForm
+from tasks.forms import TaskForm, TaskFilterForm, ProjectForm, TaskPutForm
 from comments.forms import CommentForm
+from tasks.mixins import UserIsOwnerMixin
 
 
 # Create your views here.
@@ -26,7 +28,7 @@ class TaskListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = TaskFilterForm(self.request.GET)
+        context["filter_form"] = TaskFilterForm(self.request.GET)
 
         return context
 
@@ -92,6 +94,19 @@ class MyTaskListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = TaskFilterForm(self.request.GET)
+        context["filter_form"] = TaskFilterForm(self.request.GET)
 
         return context
+
+
+class TaskUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
+    model = Task
+    template_name = "tasks/task_update_form.html"
+    success_url = reverse_lazy("project-list")
+    form_class = TaskPutForm
+
+
+class TaskDeleteView(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
+    model = Task
+    success_url = reverse_lazy("project-list")
+    template_name = "tasks/task_delete_form.html"
