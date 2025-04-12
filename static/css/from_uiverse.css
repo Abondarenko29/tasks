@@ -95,111 +95,14 @@
     border-color: #fff;
   }
 
-  button {
-    border: none;
-    display: flex;
-    padding: 0.75rem 1.5rem;
-    background-color: #488aec;
-    color: #ffffff;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    vertical-align: middle;
-    align-items: center;
-    border-radius: 0.5rem;
-    user-select: none;
-    gap: 0.75rem;
-    box-shadow:
-      0 4px 6px -1px #488aec31,
-      0 2px 4px -1px #488aec17;
-    transition: all 0.6s ease;
+  input[type="file"] {
+    display: none;
   }
   
-  button:hover {
-    box-shadow:
-      0 10px 15px -3px #488aec4f,
-      0 4px 6px -2px #488aec17;
-  }
-  
-  button:focus,
-  button:active {
-    opacity: 0.85;
-    box-shadow: none;
-  }
-  
-  button svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  [type="file"] {
-    height: 0;
-    overflow: hidden;
-    width: 0;
-  }
-  
-  [type="file"] + label {
-    background: #f15d22;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
+  .file-upload {
+    border-radius: 10px;
+    color: darkblue;
     display: inline-block;
-    font-family: 'Rubik', sans-serif;
-    font-size: inherit;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    outline: none;
-    padding: 1rem 50px;
-    position: relative;
-    transition: all 0.3s;
-    vertical-align: middle;
-    
-    &:hover {
-      background-color: darken(#f15d22, 10%);
-    }
-    
-    
-    &.btn-3 {
-      background-color: #ee6d9e;
-      border-radius: 0;
-      overflow: hidden;
-      
-      span {
-        display: inline-block;
-        height: 100%;
-        transition: all 0.3s;
-        width: 100%;
-      }
-      
-      &::before {
-        color: #fff;
-        content: "\f382";
-        font-family: "Font Awesome 5 Pro";
-        font-size: 130%;
-        height: 100%;
-        left: 0;
-        line-height: 2.6;
-        position: absolute;
-        top: -180%;
-        transition: all 0.3s;
-        width: 100%;
-      }
-  
-      &:hover {
-        background-color: darken(#ee6d9e, 30%);
-        
-        span {
-          transform: translateY(300%);
-        }
-          
-        &::before {
-          top: 0;
-        }
-      }
-    }
+    padding: 6px 12px;
+    cursor: pointer;
   }
-  

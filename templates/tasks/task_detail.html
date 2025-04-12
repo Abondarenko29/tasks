@@ -4,17 +4,21 @@
 {% block content %}
 
 <div class="details">
-<h2><a href="{% url 'task-update' task.pk %}" class="blue">{{ task.title }}</a>
+<h2>{{ task.title }}
 <small class="text-body-secondary">
     <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
     <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>
 </small></h2>
 <div class="vertical"><p>
-Creator: {{ task.creator.username }}<br>
-Maker: {{ task.maker.username }}<br>
-Be solved to: {{ task.due_date }}<br>
-Created ar: {{ task.created_at }}</p></div>
+  Creator: {{ task.creator.username }}<br>
+  Maker: {{ task.maker.username }}<br>
+  Be solved to: {{ task.due_date }}<br>
+  Created ar: {{ task.created_at }}</p></div>
 <p class="fs-5 task-text">{{ task.description }}</p>
+<div class="edit-delete">
+  <a href="{% url 'task-update' task.pk %}" class="btn btn-warning ed blue bold">Edit</a>
+  <a href="{% url 'task-delete' task.pk %}" class="btn btn-danger ed green bold">Delete</a>
+</div>
 </div>
 <div class="comment-system">
   {% for comment in task.comments.all %}
@@ -41,7 +45,7 @@ Created ar: {{ task.created_at }}</p></div>
             <source src="{{ comment.media.url }}" type="video/mp4"></source>
           </video>
         {% else %}
-          <a href="{{ comment.video.url }}" class="blue">Load file</a>
+          <a href="{{ co }}" class="blue">Load file</a>
         {% endif %}
       {% endif %}
       <img>
@@ -55,9 +59,8 @@ Created ar: {{ task.created_at }}</p></div>
     <div class="flex">
       {{ comment_form.content }}
       <div class="block">
-        <div class="">
-        <label for="id_media" class="btn-3">select
-        </label>
+        <label for="id_media" class="file-upload bg-secondary">Add photo or video
+        </label><br>
         {{ comment_form.media }}
         <button type="submit" class="btn btn-warning">Send</button></div>
       </div>
