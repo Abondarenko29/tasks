@@ -3,15 +3,16 @@
 
 {% for project in projects %}
 <details class="my-accordion">
-  <summary><a href="{% url 'task-list' project.pk %}" class="yellow"><small>Editors: 
+  <summary><small class="yellow">Editors: 
     {% for editor in project.editors.all %}
     {{ editor.username }}
     {% endfor %}
-  </small></a>
-    <h2 class="blue">{{ project.name }}</h2></summary>
+  </small>
+  <a href="{% url 'task-list' project.pk %}" class="blue">
+    <h2 class="blue">{{ project.name }}</h2></summary></a>
   <ul>
     {% for task in project.tasks.all %}
-    <li class="yellow fs-5 text">
+    <li class="list-group-item yellow fs-5 text">
       {{ task.title }}
           <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
           <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>

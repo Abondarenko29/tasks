@@ -33,7 +33,8 @@ class TaskForm(forms.ModelForm):
         for field in self.fields:
             field_editing = self.fields[field].widget.attrs
             field_editing.update({"rows": "10",
-                                  "cols": "50", })
+                                  "cols": "50",
+                                  "class": "bg-transparent padding-3 blue", })
 
 
 class TaskFilterForm(forms.Form):
@@ -50,4 +51,11 @@ class TaskFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(TaskFilterForm, self).__init__(*args, **kwargs)
         field_status = self.fields["status"].widget.attrs
-        field_status.update({"class": "form-control bg-warning"})
+        field_status.update({"class":
+                             "form-control bg-warning"})
+
+
+class TaskPutForm(TaskForm):
+    class Meta(TaskForm.Meta):
+        fields = ["title", "description", "status",
+                  "priority", "due_date"]

@@ -4,8 +4,8 @@
 
 <form method="get">
     <div class="fs-5 w-50 flex filter yellow">
-        <label for="{{ form.status.id_for_label }}" class="filter">{{ form.status.label }}: </label>
-        {{ form.status }}
+        <label for="{{ form.status.id_for_label }}" class="filter">{{ filter_form.status.label }}: </label>
+        {{ filter_form.status }}
         <button type="submit" class="btn btn-primary">filter</button>
     </div>
 </form>
@@ -16,8 +16,15 @@
         <div class="d-flex w-100 justify-content-between white">
         <h5 class="mb-1">{{ task.title }}</h5>
         <small class="text-body-secondary">
-            <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
-            <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>
+        <span class="badge text-bg-warning">{{ task.get_status_display }}</span>
+        <span class="badge text-bg-danger">{{ task.get_priority_display }}</span>
+        <!-- <form method="post">
+            <select name="status" rows="10" cols="50" id="id_status">
+                <option><input type="button" value="todo" selected="">To Do</option></option>
+                <option><input type="button" value="in_progress">In Progress</option></option>
+                <option><input type="button" value="done">Done</option></option>
+            </select>
+        </form> -->
         </small>
         </div>
         <p class="mb-1 white">{{ task.description }}</p>

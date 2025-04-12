@@ -39,6 +39,10 @@ ul.nav-underline {
     color: darkblue !important;
 }
 
+.bold {
+    font-weight: bold !important;
+}
+
 ul.errorlist {
     color: rgb(187, 0, 0) !important;
     font-size: 18px !important;
@@ -155,4 +159,28 @@ details.my-accordion {
     padding:10px;
     border:2px solid rgba(169, 169, 169, 0.7);
     border-radius:3px;
+}
+
+.edit-delete {
+    max-width: 50%;
+    display: flex;
+}
+
+a.ed {
+    width: 50%;
+}
+
+.form-multi-select-input-group {
+    background-color: rgb(99, 109, 6);
+    border-color: rgb(99, 109, 6);
+}
+
+.form-multi-select-indicator {
+    border: 1px solid #414141;
+}
+
+.padding-3 {
+    padding: 3px;
+    border-color: #414141;
+    border-radius: 8px;
 }

@@ -16,4 +16,4 @@ class CommentForm(forms.ModelForm):
         content_field = self.fields["content"].widget.attrs
         media_field = self.fields["media"].widget.attrs
         content_field.update({"class": "comment", })
-        media_field.update({"class": "comment form-control flex", })
+        media_field.update({"class": "comment form-control", })

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <form method="post" style="margin-left: 50px;" class="form">
+        <div class="row g-3 align-items-center">
+            {% csrf_token %}
+            <p class="fs-5 text">Do you want to delete?</p>
+        </div>
+        <div class="edit-delete">
+            <button type="submit" class="form-submit-btn bg-danger green">Yes</button>
+            <a href="{% url 'task-detail' task.pk %}" class="form-submit-btn bg-warning blue">No</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
